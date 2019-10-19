@@ -1,0 +1,48 @@
+<div class="col">
+  <h1>Patients</h1>
+  <button mat-fab color="primary" style="margin-bottom: 15px" (click)="addPatient()">+</button>
+</div>
+
+<mat-accordion *ngIf="patients" class="example-headers-align">
+  <mat-expansion-panel *ngFor="let patient of patients" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{patient.name}} {{patient.surname}}
+      </mat-panel-title>
+
+    </mat-expansion-panel-header>
+    <form [formGroup]="messageForm">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name" value="{{patient.name}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Surname" formControlName="surname" value="{{patient.surname}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" value="{{patient.email}}">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="Height" formControlName="height" value="{{patient.height}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Weight" formControlName="weight" value="{{patient.weight}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Blood Pressure" formControlName="bloodPressure" value="{{patient.bp}}">
+      </mat-form-field>
+    </form>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="editPatient(patient)">Edit</button>
+      <button mat-button color="primary" (click)="savePatientDetails()">Save</button>
+      <button mat-button color="warn" (click)="deletePatient(patient)">Delete</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+
